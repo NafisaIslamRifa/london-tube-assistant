@@ -4,9 +4,10 @@
 
 **An agentic RAG assistant for London transport: live line status, next trains and fares from the TfL API, plus cited answers from official TfL guidance.**
 
-**[Live demo](https://YOUR-APP.streamlit.app)** · LLM tool calling · RAG with Chroma · Streamlit · Docker · GitHub Actions
+**[Live demo](https://london-tube-assistant.streamlit.app/)** · LLM tool calling · RAG with Chroma · Streamlit · Docker · GitHub Actions
 
-![The assistant answering a fare question with live data](docs/screenshot.png)
+![The assistant answering a fare question with live data]()<img width="1131" height="603" alt="image" src="https://github.com/user-attachments/assets/0da329d1-967d-4bdc-8b83-67659702d8b2" />
+
 
 > Unofficial portfolio project, not affiliated with TfL. Powered by TfL Open Data.
 
