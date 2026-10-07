@@ -32,3 +32,23 @@ CHUNK_OVERLAP_WORDS = int(os.getenv("CHUNK_OVERLAP_WORDS", "40"))
 # cross-encoder read each (question, passage) pair and keep the best few.
 RERANK_MODEL = os.getenv("RERANK_MODEL", "Xenova/ms-marco-MiniLM-L-6-v2")
 RETRIEVE_CANDIDATES = int(os.getenv("RETRIEVE_CANDIDATES", "20"))
+# Day 3 result: on 32 questions reranking did not beat vector search
+# (section Hit@1 0.78 vs 0.81), so it is off by default. Set USE_RERANK=true to try it.
+USE_RERANK = os.getenv("USE_RERANK", "false").lower() in ("1", "true", "yes")
+
+# LLM (Day 4). Any OpenAI-compatible API. Presets:
+#   groq   -> free hosted gpt-oss-120b (needs LLM_API_KEY from console.groq.com)
+#   ollama -> local model, no key (needs Ollama running; see Day 6 Docker)
+#   openai -> any other OpenAI-compatible endpoint (set LLM_BASE_URL)
+LLM_PRESETS = {
+    "groq": {"base_url": "https://api.groq.com/openai/v1", "model": "openai/gpt-oss-120b"},
+    "ollama": {"base_url": "http://localhost:11434/v1", "model": "llama3.2"},
+    "openai": {"base_url": "https://api.openai.com/v1", "model": "gpt-4o-mini"},
+}
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "groq").strip().lower()
+_preset = LLM_PRESETS.get(LLM_PROVIDER, LLM_PRESETS["openai"])
+LLM_BASE_URL = os.getenv("LLM_BASE_URL") or _preset["base_url"]
+LLM_MODEL = os.getenv("LLM_MODEL") or _preset["model"]
+LLM_API_KEY = os.getenv("LLM_API_KEY", "").strip() or ("ollama" if LLM_PROVIDER == "ollama" else "")
+LLM_RPM = int(os.getenv("LLM_RPM", "0") or 0)        # client-side pacing; 0 = off
+LLM_TIMEOUT = float(os.getenv("LLM_TIMEOUT", "60"))

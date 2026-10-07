@@ -24,7 +24,7 @@ def test_rerank_empty():
 
 
 def test_search_two_stages(collection):  # noqa: F811
-    hits = search("children under 11 free", k=1, candidates=3, collection=collection,
+    hits = search("children under 11 free", k=1, use_rerank=True, candidates=3, collection=collection,
                   embed=fake_vec, score_fn=keyword_scores)
     assert len(hits) == 1 and hits[0]["doc_id"] == "kids" and "rerank_score" in hits[0]
     plain = search("children under 11 free", k=2, use_rerank=False, collection=collection,

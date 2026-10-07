@@ -23,6 +23,13 @@ python -m tube.rag.search --compare "Do I need to touch out on the bus?"
 python -m tube.evaluation.retrieval_eval     # vector-only vs + cross-encoder, saved to eval/
 ```
 
+## Ask the agent
+```bash
+cp .env.example .env        # add LLM_API_KEY (free at console.groq.com)
+python -m tube.agent.cli "Is the Victoria line running?"
+python -m tube.agent.cli    # interactive chat with follow-ups
+```
+
 ## Live check against the TfL API
 ```bash
 python -m scripts.fetch_stations   # builds data/stations.json

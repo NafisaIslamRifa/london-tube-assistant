@@ -14,9 +14,11 @@ from tube.rag.reranker import cross_encoder_scores, rerank
 from tube.rag.retriever import retrieve
 
 
-def search(question: str, k: int = 5, use_rerank: bool = True,
+def search(question: str, k: int = 5, use_rerank: bool | None = None,
            candidates: int = config.RETRIEVE_CANDIDATES, topic: str | None = None,
            collection=None, embed=embed_query, score_fn=cross_encoder_scores) -> list[dict]:
+    if use_rerank is None:
+        use_rerank = config.USE_RERANK
     if not use_rerank:
         return retrieve(question, k=k, topic=topic, collection=collection, embed=embed)
     pool = retrieve(question, k=max(k, candidates), topic=topic, collection=collection, embed=embed)
@@ -36,9 +38,9 @@ def main() -> None:
     ap.add_argument("--compare", action="store_true", help="show vector-only vs reranked")
     args = ap.parse_args()
     q = " ".join(args.question)
-    if args.compare:
-        _show("Vector search only", search(q, use_rerank=False))
-    _show("Vector search + cross-encoder rerank", search(q))
+    _show("Vector search only", search(q, use_rerank=False))
+    if args.compare or config.USE_RERANK:
+        _show("Vector search + cross-encoder rerank", search(q, use_rerank=True))
 
 
 if __name__ == "__main__":
