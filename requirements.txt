@@ -10,5 +10,8 @@ chromadb>=1.0
 # Day 4: LLM agent (any OpenAI-compatible API: Groq, Ollama, OpenAI)
 openai>=1.40
 
+# Day 5: web app
+streamlit>=1.40
+
 # Tests
 pytest>=8.0

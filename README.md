@@ -30,6 +30,11 @@ python -m tube.agent.cli "Is the Victoria line running?"
 python -m tube.agent.cli    # interactive chat with follow-ups
 ```
 
+## Run the web app
+```bash
+python -m streamlit run app/streamlit_app.py     # then open port 8501
+```
+
 ## Live check against the TfL API
 ```bash
 python -m scripts.fetch_stations   # builds data/stations.json
