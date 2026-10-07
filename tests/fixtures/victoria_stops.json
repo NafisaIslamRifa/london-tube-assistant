@@ -1,0 +1,6 @@
+[
+  {"naptanId": "940GZZLUVIC", "commonName": "Victoria Underground Station", "stopType": "NaptanMetroStation", "lat": 51.4965, "lon": -0.1447},
+  {"naptanId": "940GZZLUOXC", "commonName": "Oxford Circus Underground Station", "stopType": "NaptanMetroStation", "lat": 51.5152, "lon": -0.1415},
+  {"naptanId": "940GZZLUKSX", "commonName": "King's Cross St. Pancras Underground Station", "stopType": "NaptanMetroStation", "lat": 51.5302, "lon": -0.1238},
+  {"naptanId": "HUBKGX", "commonName": "King's Cross & St Pancras International", "stopType": "TransportInterchange"}
+]

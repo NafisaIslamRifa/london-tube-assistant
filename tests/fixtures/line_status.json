@@ -1,0 +1,11 @@
+[
+  {"id": "victoria", "name": "Victoria", "modeName": "tube",
+   "lineStatuses": [{"statusSeverity": 10, "statusSeverityDescription": "Good Service"}]},
+  {"id": "central", "name": "Central", "modeName": "tube",
+   "lineStatuses": [{"statusSeverity": 9, "statusSeverityDescription": "Minor Delays",
+                     "reason": "Central Line: Minor delays due to an earlier signal failure."}]},
+  {"id": "district", "name": "District", "modeName": "tube",
+   "lineStatuses": [
+     {"statusSeverity": 3, "statusSeverityDescription": "Part Closure", "reason": "No service between Earl's Court and Wimbledon."},
+     {"statusSeverity": 9, "statusSeverityDescription": "Minor Delays", "reason": "Minor delays on the rest of the line."}]}
+]

@@ -1,0 +1,5 @@
+[
+  {"lineName": "Victoria", "destinationName": "Brixton Underground Station", "timeToStation": 250, "platformName": "Southbound - Platform 4"},
+  {"lineName": "Central", "destinationName": "Epping Underground Station", "timeToStation": 20, "platformName": "Eastbound - Platform 1"},
+  {"lineName": "Bakerloo", "towards": "Elephant and Castle", "timeToStation": 95, "platformName": ""}
+]

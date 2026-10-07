@@ -1,0 +1,6 @@
+# Day 1: TfL API client
+requests>=2.31
+python-dotenv>=1.0
+
+# Tests
+pytest>=8.0

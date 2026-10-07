@@ -1,0 +1,11 @@
+[
+  {"header": "Single fare", "index": 0,
+   "rows": [
+     {"ticketsAvailable": [
+       {"passengerType": "Adult", "cost": "3.00", "ticketType": {"type": "Pay as you go"}, "ticketTime": {"type": "Peak"}},
+       {"passengerType": "Adult", "cost": "2.90", "ticketType": {"type": "Pay as you go"}, "ticketTime": {"type": "Off Peak"}},
+       {"passengerType": "Adult", "cost": "7.10", "ticketType": {"type": "CashSingle"}, "ticketTime": {"type": "Anytime"}},
+       {"passengerType": "Child", "cost": "0.00", "ticketType": {"type": "Pay as you go"}, "ticketTime": {"type": "Anytime"}}]},
+     {"ticketsAvailable": [
+       {"passengerType": "Adult", "cost": "3.00", "ticketType": {"type": "Pay as you go"}, "ticketTime": {"type": "Peak"}}]}]}
+]
