@@ -43,3 +43,10 @@ def demo_limit() -> int:
 def llm_label() -> str:
     from tube import config  # imported late: secrets must be in the environment first
     return f"{config.LLM_MODEL} via {config.LLM_PROVIDER}"
+
+
+@st.cache_resource(show_spinner=False)
+def ensure_ready() -> dict:
+    """Build the station list and search index if missing (once per server)."""
+    from tube.bootstrap import ensure_ready as run
+    return run()

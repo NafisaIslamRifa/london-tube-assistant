@@ -42,6 +42,7 @@ def fake_services(monkeypatch):
     monkeypatch.setattr(services, "new_agent", lambda: agent)
     monkeypatch.setattr(services, "get_toolbox", lambda: box)
     monkeypatch.setattr(services, "llm_label", lambda: "fake-model via test")
+    monkeypatch.setattr(services, "ensure_ready", lambda: {"index": "present"})
     monkeypatch.delenv("DEMO_MAX_QUESTIONS", raising=False)
     return agent
 
@@ -133,3 +134,14 @@ def test_helpers():
     class AuthenticationError(Exception):
         pass
     assert "API key" in friendly_error(AuthenticationError())
+
+
+def test_index_failure_shows_warning_but_app_works(fake_services, monkeypatch):
+    def boom():
+        raise RuntimeError("Could not download any TfL guidance pages.")
+    monkeypatch.setattr(services, "ensure_ready", boom)
+    at = run()
+    assert not at.exception
+    assert "guidance search isn't available" in at.warning[0].value
+    at.chat_input[0].set_value("Is the Victoria line running?").run()
+    assert fake_services.questions == ["Is the Victoria line running?"]

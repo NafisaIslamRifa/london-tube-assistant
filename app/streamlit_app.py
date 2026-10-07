@@ -200,6 +200,13 @@ def arrivals_view() -> None:
 
 # ------------------------------------------------------------------ page
 try:
+    with st.spinner("Preparing the TfL knowledge base (first start only, about a minute)..."):
+        services.ensure_ready()
+except Exception as exc:  # noqa: BLE001 - live tools still work without the index
+    st.warning(f"The guidance search isn't available yet ({exc}). Live status, fares and "
+               "next trains still work.")
+
+try:
     init_state()
 except SystemExit as exc:  # e.g. LLM_API_KEY missing
     st.error(str(exc))

@@ -35,6 +35,30 @@ python -m tube.agent.cli    # interactive chat with follow-ups
 python -m streamlit run app/streamlit_app.py     # then open port 8501
 ```
 
+## Run with Docker
+```bash
+cp .env.example .env                 # add LLM_API_KEY
+docker compose up --build            # http://localhost:8501
+```
+The first start downloads the TfL pages and builds the index into a Docker volume, so later starts are instant.
+
+| Setup | Command |
+|---|---|
+| Hosted LLM (Groq), default | `docker compose up --build` |
+| Fully local LLM, no key (Ollama + llama3.2, ~2 GB download) | `docker compose -f docker-compose.yml -f docker-compose.ollama.yml up --build` |
+| GitHub Codespaces (container networking workaround) | `docker compose -f docker-compose.yml -f docker-compose.host.yml up --build` |
+
+## Deploy a free public demo (Streamlit Community Cloud)
+1. [share.streamlit.io](https://share.streamlit.io) → **Create app** → this repo, branch `main`, file `app/streamlit_app.py`; Advanced settings → Python 3.12.
+2. **Secrets**:
+   ```toml
+   LLM_PROVIDER = "groq"
+   LLM_API_KEY = "your-groq-key"
+   LLM_RPM = "4"
+   DEMO_MAX_QUESTIONS = "5"
+   ```
+3. Deploy. The first visit builds the knowledge base (about a minute); after that it is cached.
+
 ## Live check against the TfL API
 ```bash
 python -m scripts.fetch_stations   # builds data/stations.json

@@ -1,0 +1,7 @@
+# GitHub Codespaces only: Docker-in-Docker there can block container networking.
+# Host networking avoids it (open port 8501 from the Ports tab).
+#   docker compose -f docker-compose.yml -f docker-compose.host.yml up --build
+services:
+  app:
+    network_mode: host
+    ports: !reset []

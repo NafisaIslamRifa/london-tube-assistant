@@ -1,0 +1,22 @@
+# Default: the app with a hosted LLM (Groq), settings from .env.
+#   docker compose up --build            -> http://localhost:8501
+# Fully local, no API key (adds an Ollama container running llama3.2):
+#   docker compose -f docker-compose.yml -f docker-compose.ollama.yml up --build
+
+services:
+  app:
+    build: .
+    image: london-tube-assistant
+    ports:
+      - "8501:8501"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - chroma:/app/data/chroma       # search index survives restarts
+      - raw:/app/data/raw             # downloaded TfL pages
+    restart: unless-stopped
+
+volumes:
+  chroma:
+  raw:

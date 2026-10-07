@@ -1,0 +1,35 @@
+# Adds a local LLM. The first start downloads llama3.2 (about 2 GB) into a volume.
+services:
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      retries: 30
+
+  ollama-pull:                       # one-off job: download the model, then exit
+    image: ollama/ollama:latest
+    environment:
+      OLLAMA_HOST: ollama:11434
+    entrypoint: ["ollama", "pull", "llama3.2"]
+    depends_on:
+      ollama:
+        condition: service_healthy
+    restart: "no"
+
+  app:
+    environment:                     # these override values from .env
+      LLM_PROVIDER: ollama
+      LLM_BASE_URL: http://ollama:11434/v1
+      LLM_MODEL: llama3.2
+      LLM_API_KEY: ollama
+      LLM_RPM: "0"
+      LLM_TIMEOUT: "180"             # small CPU-only machines answer slowly
+    depends_on:
+      ollama-pull:
+        condition: service_completed_successfully
+
+volumes:
+  ollama:

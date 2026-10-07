@@ -44,13 +44,15 @@ def page_record(source: dict, html: str) -> dict:
     }
 
 
-def main() -> None:
-    out = Path(config.RAW_DOCS_PATH)
+def fetch_all(out_path: str | Path = config.RAW_DOCS_PATH, sources: list[dict] = SOURCES,
+              session=None, sleep=time.sleep, log=print) -> tuple[int, list]:
+    """Fetch every source page into a JSONL file. Returns (pages saved, failures)."""
+    out = Path(out_path)
     out.parent.mkdir(parents=True, exist_ok=True)
-    session = requests.Session()
-    ok, failed = [], []
+    session = session or requests.Session()
+    ok, failed = 0, []
     with out.open("w", encoding="utf-8") as f:
-        for src in SOURCES:
+        for i, src in enumerate(sources):
             url = url_for(src)
             try:
                 rec = page_record(src, fetch_page(url, session))
@@ -58,13 +60,19 @@ def main() -> None:
                     raise ValueError("no text found on page")
                 f.write(json.dumps(rec, ensure_ascii=False) + "\n")
                 words = sum(len(s["text"].split()) for s in rec["sections"])
-                ok.append(src)
-                print(f"  ✓ {rec['title'][:55]:<55} {len(rec['sections']):>3} sections {words:>6} words")
-            except Exception as exc:
+                ok += 1
+                log(f"  ✓ {rec['title'][:55]:<55} {len(rec['sections']):>3} sections {words:>6} words")
+            except Exception as exc:  # noqa: BLE001 - report and carry on with the next page
                 failed.append((url, exc))
-                print(f"  ✗ {url}\n      {type(exc).__name__}: {str(exc)[:120]}")
-            time.sleep(1.0)  # be polite to tfl.gov.uk
-    print(f"\nSaved {len(ok)}/{len(SOURCES)} pages to {out}")
+                log(f"  ✗ {url}\n      {type(exc).__name__}: {str(exc)[:120]}")
+            if i < len(sources) - 1:
+                sleep(1.0)  # be polite to tfl.gov.uk
+    log(f"\nSaved {ok}/{len(sources)} pages to {out}")
+    return ok, failed
+
+
+def main() -> None:
+    _, failed = fetch_all()
     if failed:
         print("Fix or remove the failed paths in tube/ingest/sources.py "
               "(tip: python -m tube.ingest.find_links https://tfl.gov.uk/fares/)")
