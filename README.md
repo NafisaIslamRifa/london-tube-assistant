@@ -65,18 +65,18 @@ Measured on 32 everyday-language questions, each mapped to the TfL page and sect
 
 
 <!-- agent-eval:start -->
-Model: `openai/gpt-oss-120b via groq` · run 2026-10-07 · 0 errors.
+Model: `openai/gpt-oss-120b via groq` · run 2026-10-07 · 1 error.
 
 | Metric | Result |
 |---|---|
-| Questions passing every check | 13 / 18 |
+| Questions passing every check | 17 / 18 |
 | Tool selection accuracy | 1.00 |
-| Citation accuracy (expected TfL page linked) | 0.62 |
+| Citation accuracy (expected TfL page linked) | 1.00 |
 | Live answers that state the data's time | 1.00 |
 | Unknown station handled without inventing a fare | 1.00 |
-| Invented-link rate | 0.17 |
-| Median time per question (incl. free-tier pacing) | 31.6 s |
-| Average tokens per question | 2571 |
+| Invented-link rate | 0.00 |
+| Median time per question (incl. free-tier pacing) | 4.5 s |
+| Average tokens per question | 2123 |
 <!-- agent-eval:end -->
 
 The 18 questions cover guidance, each live tool, multi-tool questions, an unknown station and off-topic requests. Live answers change, so checks are structural: right tools, the expected page linked, a timestamp on live data, no invented price or link. Times include the client-side pacing that keeps the run inside Groq's free tier.
