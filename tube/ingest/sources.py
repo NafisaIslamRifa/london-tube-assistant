@@ -1,9 +1,8 @@
 """Official TfL guidance pages that make up the knowledge base.
 
-Three pages were checked by hand (marked "verified"); the rest follow TfL's URL
-pattern. `python -m tube.ingest.fetch_tfl` reports any page that fails, and
-`python -m tube.ingest.find_links <url>` lists real links on a page so you can
-fix or add paths.
+Every path here was fetched successfully from tfl.gov.uk (October 2026). If TfL moves
+a page, `python -m tube.ingest.fetch_tfl` reports it and
+`python -m tube.ingest.find_links <url> --under <path>` lists the real links.
 """
 
 BASE = "https://tfl.gov.uk"
@@ -11,21 +10,24 @@ BASE = "https://tfl.gov.uk"
 SOURCES = [
     # --- Paying for travel ---
     {"path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/touching-in-and-out",
-     "topic": "paying"},                                                     # verified
-    {"path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/capping",
      "topic": "paying"},
     {"path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/contactless-and-mobile-pay-as-you-go",
      "topic": "paying"},
     {"path": "/fares/refunds-and-replacements", "topic": "paying"},
 
-    # --- Fares and discounts ---
-    {"path": "/fares/find-fares/tube-and-rail-fares", "topic": "fares"},     # verified
-    {"path": "/fares/find-fares/bus-and-tram-fares", "topic": "fares"},      # verified
-    {"path": "/fares/free-and-discounted-travel/children-and-young-people", "topic": "fares"},
+    # --- Fares ---
+    {"path": "/fares/find-fares/tube-and-rail-fares", "topic": "fares"},
+    {"path": "/fares/find-fares/bus-and-tram-fares", "topic": "fares"},
 
-    # --- Using the Tube ---
+    # --- Free and discounted travel ---
+    {"path": "/fares/free-and-discounted-travel/5-10-zip-oyster-photocard", "topic": "discounts"},
+    {"path": "/fares/free-and-discounted-travel/11-15-zip-oyster-photocard", "topic": "discounts"},
+    {"path": "/fares/free-and-discounted-travel/18-plus-student-oyster-photocard", "topic": "discounts"},
+    {"path": "/fares/free-and-discounted-travel/60-plus-oyster-photocard", "topic": "discounts"},
+
+    # --- Using the network ---
     {"path": "/modes/tube/night-tube", "topic": "services"},
-    {"path": "/transport-accessibility/", "topic": "accessibility"},         # verified
+    {"path": "/transport-accessibility/", "topic": "accessibility"},
 ]
 
 

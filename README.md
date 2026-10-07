@@ -17,6 +17,12 @@ python -m tube.rag.build_index         # chunk, embed, store in Chroma (data/chr
 python -m tube.rag.retriever "Do I need to touch out on the bus?"
 ```
 
+## Search with reranking, and measure it
+```bash
+python -m tube.rag.search --compare "Do I need to touch out on the bus?"
+python -m tube.evaluation.retrieval_eval     # vector-only vs + cross-encoder, saved to eval/
+```
+
 ## Live check against the TfL API
 ```bash
 python -m scripts.fetch_stations   # builds data/stations.json

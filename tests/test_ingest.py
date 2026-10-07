@@ -37,3 +37,20 @@ def test_sources_are_unique_tfl_paths():
     paths = [s["path"] for s in SOURCES]
     assert len(paths) == len(set(paths))
     assert all(url_for(s).startswith("https://tfl.gov.uk/") for s in SOURCES)
+
+
+ACCORDION = (Path(__file__).parent / "fixtures" / "tfl_accordion.html").read_text()
+
+
+def test_accordion_headings_inside_buttons_are_kept():
+    """Regression: <button> titles were deleted, merging sections into 'Overview'."""
+    secs = extract_sections(ACCORDION)["sections"]
+    assert [s["heading"] for s in secs] == [
+        "Overview", "Why touch in and touch out", "Buses and trams", "Same station exits"]
+
+
+def test_plain_text_divs_and_details_are_read():
+    secs = {s["heading"]: s["text"] for s in extract_sections(ACCORDION)["sections"]}
+    assert "Do not touch out" in secs["Buses and trams"]          # text directly in a <div>
+    assert "same station within a short time" in secs["Same station exits"]
+    assert "cookies" not in " ".join(secs.values())

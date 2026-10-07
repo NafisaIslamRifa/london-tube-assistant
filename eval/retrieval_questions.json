@@ -1,0 +1,41 @@
+[
+  {"id": "t01", "question": "Do I need to tap out when I finish a Tube journey?", "path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/touching-in-and-out", "sections": ["Overview"]},
+  {"id": "t02", "question": "Why should I use the pink readers when I change trains?", "path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/touching-in-and-out", "sections": ["pink card readers"]},
+  {"id": "t03", "question": "What happens if I forget to tap out?", "path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/touching-in-and-out", "sections": ["don't touch in and out"]},
+  {"id": "t04", "question": "The station gates were left open after a concert. Do I still need to tap?", "path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/touching-in-and-out", "sections": ["sporting or entertainment"]},
+  {"id": "t05", "question": "How should I tap when taking the tram to Wimbledon?", "path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/touching-in-and-out", "sections": ["Wimbledon"]},
+  {"id": "t06", "question": "I arrived at Mitcham Junction by train and want to get the tram. Where do I tap?", "path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/touching-in-and-out", "sections": ["Mitcham Junction"]},
+
+  {"id": "p01", "question": "Can I pay for the Tube with Apple Pay or Google Pay on my phone?", "path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/contactless-and-mobile-pay-as-you-go", "sections": ["with mobile"]},
+  {"id": "p02", "question": "Where can I top up my Oyster card?", "path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/contactless-and-mobile-pay-as-you-go", "sections": ["with an Oyster card"]},
+  {"id": "p03", "question": "Why should I register my Oyster card?", "path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/contactless-and-mobile-pay-as-you-go", "sections": ["Register your Oyster"]},
+  {"id": "p04", "question": "Can I just use my contactless bank card on the Tube?", "path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/contactless-and-mobile-pay-as-you-go", "sections": ["with contactless"]},
+  {"id": "p05", "question": "Which kinds of transport can I use pay as you go on?", "path": "/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/contactless-and-mobile-pay-as-you-go", "sections": ["Where to use it"]},
+
+  {"id": "f01", "question": "My Tube was 20 minutes late. Can I get my money back?", "path": "/fares/refunds-and-replacements", "sections": ["Service delay"]},
+  {"id": "f02", "question": "I was charged a maximum fare. How do I get a refund?", "path": "/fares/refunds-and-replacements", "sections": ["Incomplete journey"]},
+  {"id": "f03", "question": "I'm leaving London. Can I get my unused Oyster credit back?", "path": "/fares/refunds-and-replacements", "sections": ["Unused credit"]},
+
+  {"id": "r01", "question": "What times count as peak on the Tube?", "path": "/fares/find-fares/tube-and-rail-fares", "sections": ["Peak and off-peak", "Using pay as you go"]},
+  {"id": "r02", "question": "When can I use an Anytime Day Travelcard?", "path": "/fares/find-fares/tube-and-rail-fares", "sections": ["Day Travelcards"]},
+
+  {"id": "b01", "question": "How long do I have to change buses without paying again?", "path": "/fares/find-fares/bus-and-tram-fares", "sections": ["Hopper fare"]},
+  {"id": "b02", "question": "What is the most an adult pays for buses in one day?", "path": "/fares/find-fares/bus-and-tram-fares", "sections": ["Adult pay as you go prices"]},
+  {"id": "b03", "question": "Do children aged 5 to 10 pay on the bus?", "path": "/fares/find-fares/bus-and-tram-fares", "sections": ["5-17"]},
+  {"id": "b04", "question": "My card is out of credit. Can I still get on the bus?", "path": "/fares/find-fares/bus-and-tram-fares", "sections": ["One more bus journey"]},
+  {"id": "b05", "question": "Are bus fares going up soon?", "path": "/fares/find-fares/bus-and-tram-fares", "sections": ["Fares from 1 November"]},
+  {"id": "b06", "question": "Is there a bus discount for people claiming Jobcentre Plus benefits?", "path": "/fares/find-fares/bus-and-tram-fares", "sections": ["Jobcentre Plus"]},
+
+  {"id": "n01", "question": "Which lines run all night at the weekend?", "path": "/modes/tube/night-tube", "sections": ["Current services", "Overview"]},
+  {"id": "n02", "question": "Are stations staffed when the Night Tube is running?", "path": "/modes/tube/night-tube", "sections": ["Staffing", "Safety"]},
+  {"id": "n03", "question": "Can I catch a night bus from a Night Tube station?", "path": "/modes/tube/night-tube", "sections": ["Night buses"]},
+
+  {"id": "a01", "question": "Can I book someone to help me at the station in advance?", "path": "/transport-accessibility/", "sections": ["Passenger Assist"]},
+  {"id": "a02", "question": "Where can I find advice on wheelchair access and avoiding stairs?", "path": "/transport-accessibility/", "sections": ["Wheelchair access"]},
+  {"id": "a03", "question": "Is there a badge I can wear to ask for a seat?", "path": "/transport-accessibility/", "sections": ["Help while travelling"]},
+
+  {"id": "d01", "question": "Does my 8 year old need a card to travel on the Tube?", "path": "/fares/free-and-discounted-travel/5-10-zip-oyster-photocard", "sections": []},
+  {"id": "d02", "question": "How can my 13 year old get cheaper travel?", "path": "/fares/free-and-discounted-travel/11-15-zip-oyster-photocard", "sections": []},
+  {"id": "d03", "question": "How do I get a student discount on travel in London?", "path": "/fares/free-and-discounted-travel/18-plus-student-oyster-photocard", "sections": []},
+  {"id": "d04", "question": "Can people over 60 travel free in London?", "path": "/fares/free-and-discounted-travel/60-plus-oyster-photocard", "sections": []}
+]

@@ -27,3 +27,8 @@ EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5")
 EMBED_BATCH_SIZE = int(os.getenv("EMBED_BATCH_SIZE", "16"))  # small = low memory
 CHUNK_MAX_WORDS = int(os.getenv("CHUNK_MAX_WORDS", "220"))
 CHUNK_OVERLAP_WORDS = int(os.getenv("CHUNK_OVERLAP_WORDS", "40"))
+
+# Reranking (Day 3): retrieve many candidates by vector similarity, then let a
+# cross-encoder read each (question, passage) pair and keep the best few.
+RERANK_MODEL = os.getenv("RERANK_MODEL", "Xenova/ms-marco-MiniLM-L-6-v2")
+RETRIEVE_CANDIDATES = int(os.getenv("RETRIEVE_CANDIDATES", "20"))

@@ -12,11 +12,14 @@ import re
 from bs4 import BeautifulSoup, Tag
 
 NOISE_TAGS = ["script", "style", "noscript", "nav", "header", "footer", "form", "aside",
-              "svg", "button", "iframe"]
+              "svg", "iframe"]
+# Accordion titles are often <button>s inside a heading, or a <summary>. Keep their text.
+UNWRAP_TAGS = ["button"]
 NOISE_ATTR = re.compile(r"cookie|consent|banner|breadcrumb|nav|footer|share|feedback|"
                         r"skip|newsletter|search", re.I)
-HEADINGS = {"h1", "h2", "h3", "h4"}
+HEADINGS = {"h1", "h2", "h3", "h4", "summary"}
 BLOCKS = {"p", "li", "td", "th", "dd", "dt", "blockquote"}
+CONTAINERS = BLOCKS | HEADINGS | {"div", "section", "article", "ul", "ol", "table", "details"}
 
 
 def _is_noise(tag: Tag) -> bool:
@@ -46,6 +49,8 @@ def extract_sections(html: str) -> dict:
     soup = BeautifulSoup(html, "html.parser")
     for t in soup.find_all(NOISE_TAGS):
         t.decompose()
+    for t in soup.find_all(UNWRAP_TAGS):
+        t.unwrap()
     for t in soup.find_all(True):
         if not t.decomposed and _is_noise(t):
             t.decompose()
@@ -61,13 +66,18 @@ def extract_sections(html: str) -> dict:
         if len(text.split()) >= 5:          # skip empty or one-word sections
             sections.append({"heading": heading, "text": text})
 
-    for el in main.find_all(list(HEADINGS | BLOCKS)):
+    for el in main.find_all(list(HEADINGS | BLOCKS | {"div"})):
         if el.name in HEADINGS:
-            if el is h1:
+            if el is h1 or el.find_parent(list(HEADINGS)):
                 continue
-            flush()
-            heading, parts = _clean(el.get_text()) or heading, []
-        elif not el.find(list(BLOCKS)):     # leaf blocks only, so nested text isn't doubled
+            new = _clean(el.get_text(" "))
+            if new:
+                flush()
+                heading, parts = new, []
+        elif el.find_parent(list(HEADINGS)):
+            continue
+        elif not el.find(list(CONTAINERS)):  # leaf only, so nested text isn't counted twice
+            # a <div> holding plain text (common in accordion panels) counts as a block too
             txt = _clean(el.get_text(" "))
             if txt:
                 parts.append(txt if txt[-1] in ".:;!?" else txt + ".")
