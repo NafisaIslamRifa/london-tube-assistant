@@ -18,3 +18,12 @@ TFL_TIMEOUT = float(os.getenv("TFL_TIMEOUT", "10"))
 STATION_MODES = [m.strip() for m in os.getenv("STATION_MODES", "tube,elizabeth-line").split(",")
                  if m.strip()]
 STATIONS_PATH = os.getenv("STATIONS_PATH", "data/stations.json")
+
+# Knowledge base (Day 2)
+RAW_DOCS_PATH = os.getenv("RAW_DOCS_PATH", "data/raw/tfl_pages.jsonl")
+CHROMA_PATH = os.getenv("CHROMA_PATH", "data/chroma")
+COLLECTION = os.getenv("CHROMA_COLLECTION", "tfl_guidance")
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5")
+EMBED_BATCH_SIZE = int(os.getenv("EMBED_BATCH_SIZE", "16"))  # small = low memory
+CHUNK_MAX_WORDS = int(os.getenv("CHUNK_MAX_WORDS", "220"))
+CHUNK_OVERLAP_WORDS = int(os.getenv("CHUNK_OVERLAP_WORDS", "40"))

@@ -10,6 +10,13 @@ pip install -r requirements.txt
 python -m pytest -q
 ```
 
+## Build the knowledge base
+```bash
+python -m tube.ingest.fetch_tfl        # TfL guidance pages -> data/raw/tfl_pages.jsonl
+python -m tube.rag.build_index         # chunk, embed, store in Chroma (data/chroma)
+python -m tube.rag.retriever "Do I need to touch out on the bus?"
+```
+
 ## Live check against the TfL API
 ```bash
 python -m scripts.fetch_stations   # builds data/stations.json

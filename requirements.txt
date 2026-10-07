@@ -2,5 +2,10 @@
 requests>=2.31
 python-dotenv>=1.0
 
+# Day 2: knowledge base (fastembed = ONNX on CPU, no PyTorch)
+beautifulsoup4>=4.12
+fastembed>=0.5
+chromadb>=1.0
+
 # Tests
 pytest>=8.0
