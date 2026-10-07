@@ -49,11 +49,9 @@ flowchart LR
 
 ## Evaluation
 
-All numbers below are written into this file by `python -m tube.evaluation.update_readme` from the saved results, so they can be reproduced.
 
 ### Retrieval: does search find the right TfL section? (`python -m tube.evaluation.retrieval_eval`)
 
-<!-- retrieval-eval:start -->
 Measured on 32 everyday-language questions, each mapped to the TfL page and section that answers it (2026-10-07).
 
 | Search | Right page first | Right page in top 5 | **Right section first** | Right section in top 3 | Section MRR |
@@ -64,7 +62,6 @@ Measured on 32 everyday-language questions, each mapped to the TfL page and sect
 
 **Decision:** a cross-encoder reranker (ms-marco-MiniLM-L-6-v2) was added and measured. It fixed 3 questions and broke 3 others, a small net loss, while adding a second model and extra latency. Vector search is therefore the default; reranking is one setting away (`USE_RERANK=true`).
 
-### Agent: end to end, with real LLM and TfL calls (`python -m tube.evaluation.agent_eval`)
 
 <!-- agent-eval:start -->
 Model: `openai/gpt-oss-120b via groq` · run 2026-10-07 · 0 errors.
