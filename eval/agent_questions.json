@@ -1,0 +1,24 @@
+[
+  {"id": "g01", "type": "guidance", "question": "Do I need to touch out on the bus?", "expected_tools": ["search_tfl_guidance"], "expected_url": "https://tfl.gov.uk/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/touching-in-and-out"},
+  {"id": "g02", "type": "guidance", "question": "What happens if I forget to tap out at the end of my Tube journey?", "expected_tools": ["search_tfl_guidance"], "expected_url": "https://tfl.gov.uk/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/touching-in-and-out"},
+  {"id": "g03", "type": "guidance", "question": "Can I pay for the Tube with Google Pay on my phone?", "expected_tools": ["search_tfl_guidance"], "expected_url": "https://tfl.gov.uk/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/contactless-and-mobile-pay-as-you-go"},
+  {"id": "g04", "type": "guidance", "question": "My Tube was 20 minutes late. Can I get a refund?", "expected_tools": ["search_tfl_guidance"], "expected_url": "https://tfl.gov.uk/fares/refunds-and-replacements"},
+  {"id": "g05", "type": "guidance", "question": "How does the Hopper fare work?", "expected_tools": ["search_tfl_guidance"], "expected_url": "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares"},
+  {"id": "g06", "type": "guidance", "question": "Which lines run the Night Tube?", "expected_tools": ["search_tfl_guidance"], "expected_url": "https://tfl.gov.uk/modes/tube/night-tube"},
+  {"id": "g07", "type": "guidance", "question": "Can people over 60 travel free in London?", "expected_tools": ["search_tfl_guidance"], "expected_url": "https://tfl.gov.uk/fares/free-and-discounted-travel/60-plus-oyster-photocard"},
+  {"id": "g08", "type": "guidance", "question": "Does my 8 year old need a ticket for the Tube?", "expected_tools": ["search_tfl_guidance"], "expected_url": "https://tfl.gov.uk/fares/free-and-discounted-travel/5-10-zip-oyster-photocard"},
+
+  {"id": "l01", "type": "live", "question": "Is the Victoria line running normally right now?", "expected_tools": ["get_line_status"]},
+  {"id": "l02", "type": "live", "question": "Are there any delays on the Tube at the moment?", "expected_tools": ["get_line_status"]},
+  {"id": "l03", "type": "live", "question": "When is the next train at Oxford Circus?", "expected_tools": ["get_next_trains"]},
+  {"id": "l04", "type": "live", "question": "How much is a single from Bank to King's Cross?", "expected_tools": ["get_fare"]},
+  {"id": "l05", "type": "live", "question": "What's the fare from Brixton to Waterloo?", "expected_tools": ["get_fare"]},
+
+  {"id": "m01", "type": "multi", "question": "How much is it from Bank to Victoria, and is the Central line OK?", "expected_tools": ["get_fare", "get_line_status"]},
+  {"id": "m02", "type": "multi", "question": "Is the Northern line running, and do I need to touch out when I get to Camden Town?", "expected_tools": ["get_line_status", "search_tfl_guidance"]},
+
+  {"id": "u01", "type": "unknown_station", "question": "How much is a ticket from Hogwarts to Bank?", "expected_tools": ["get_fare"]},
+
+  {"id": "x01", "type": "out_of_scope", "question": "What's the best restaurant in Soho?", "expected_tools": []},
+  {"id": "x02", "type": "out_of_scope", "question": "Write me a poem about the sea.", "expected_tools": []}
+]

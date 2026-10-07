@@ -1,0 +1,325 @@
+{
+  "run_at": "2026-10-07T20:39:04+00:00",
+  "model": "openai/gpt-oss-120b via groq",
+  "summary": {
+    "n": 18,
+    "errors": 0,
+    "pass_rate": 0.72,
+    "tool_selection": 1.0,
+    "citation_accuracy": 0.62,
+    "live_timestamp_rate": 1.0,
+    "unknown_station_handled": 1.0,
+    "invented_link_rate": 0.17,
+    "median_seconds": 31.6,
+    "avg_tokens": 2571
+  },
+  "rows": [
+    {
+      "id": "g01",
+      "type": "guidance",
+      "question": "Do I need to touch out on the bus?",
+      "tools_used": [
+        "search_tfl_guidance"
+      ],
+      "checks": {
+        "right_tools": true,
+        "cites_expected_page": false,
+        "no_invented_links": true
+      },
+      "passed": false,
+      "seconds": 6.93,
+      "tokens": 2415,
+      "answer": "No – on a bus you only need to **touch in** when you board; there is no touch‑out required.  \n\n(See TfL’s “Touching in and out” guidance – buses and trams require only a touch‑in 【source】)"
+    },
+    {
+      "id": "g02",
+      "type": "guidance",
+      "question": "What happens if I forget to tap out at the end of my Tube journey?",
+      "tools_used": [
+        "search_tfl_guidance"
+      ],
+      "checks": {
+        "right_tools": true,
+        "cites_expected_page": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 1.79,
+      "tokens": 2443,
+      "answer": "If you forget to tap out, TfL can’t work out the correct fare, so it treats the journey as incomplete and charges you the **maximum fare** – which does **not count towards any daily or weekly cap**. In extreme cases (e.g., you didn’t tap in or out at either end) you could also be issued a penalty fare or face prosecution.  \n\nIf the missed tap‑out was due to a system‑controlled gate opening (e.g., at a major event), TfL may automatically complete the journey and refund any over‑charge to your Oyster or contactless account.  \n\nSource: TfL “Touching in and out – What happens if you don’t touch in and out” [link](https://tfl.gov.uk/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/touching-in-and-out)."
+    },
+    {
+      "id": "g03",
+      "type": "guidance",
+      "question": "Can I pay for the Tube with Google Pay on my phone?",
+      "tools_used": [
+        "search_tfl_guidance"
+      ],
+      "checks": {
+        "right_tools": true,
+        "cites_expected_page": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 58.86,
+      "tokens": 2421,
+      "answer": "Yes – you can use Google Pay on your phone to touch in and out on the Tube, just like a contactless bank card. It works the same way as other mobile‑payment methods (Apple Pay, Samsung Pay, etc.)【source】(https://tfl.gov.uk/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/contactless-and-mobile-pay-as-you-go)"
+    },
+    {
+      "id": "g04",
+      "type": "guidance",
+      "question": "My Tube was 20 minutes late. Can I get a refund?",
+      "tools_used": [
+        "search_tfl_guidance",
+        "search_tfl_guidance",
+        "search_tfl_guidance"
+      ],
+      "checks": {
+        "right_tools": true,
+        "cites_expected_page": false,
+        "no_invented_links": true
+      },
+      "passed": false,
+      "seconds": 61.32,
+      "tokens": 6898,
+      "answer": "No – TfL does not provide a refund or compensation for a Tube journey that arrives late. The Tube fare you paid is for the service you used, and delays on the Underground are not covered by a refund scheme.  \n\nIf you need more detail or want to raise a complaint, you can check TfL’s official guidance on refunds and compensation here: https://tfl.gov.uk (search “delay refund” or “compensation”)."
+    },
+    {
+      "id": "g05",
+      "type": "guidance",
+      "question": "How does the Hopper fare work?",
+      "tools_used": [
+        "search_tfl_guidance"
+      ],
+      "checks": {
+        "right_tools": true,
+        "cites_expected_page": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 1.2,
+      "tokens": 2381,
+      "answer": "The Hopper fare gives you unlimited bus and tram journeys for **£1.75** when you travel *within one hour of your first touch‑in* using the same Oyster card or contactless device. It works automatically for adult pay‑as‑you‑go fares (and the same discounted rates for eligible passengers).  \n\n- Touch in on the first bus/tram, then you can hop on any other bus or tram up to 60 minutes later without paying again.  \n- If your card has a negative balance after the first journey, the Hopper fare won’t apply – you must top up within that hour to be eligible.  \n\nSource: [Bus and tram fares – Hopper fare](https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares) (section “Hopper fare”)."
+    },
+    {
+      "id": "g06",
+      "type": "guidance",
+      "question": "Which lines run the Night Tube?",
+      "tools_used": [
+        "search_tfl_guidance"
+      ],
+      "checks": {
+        "right_tools": true,
+        "cites_expected_page": true,
+        "no_invented_links": false
+      },
+      "passed": false,
+      "seconds": 58.45,
+      "tokens": 2010,
+      "answer": "The Night Tube runs on the **Central, Jubilee, Northern, Piccadilly, Victoria and Waterloo & City lines** on Friday and Saturday nights.  \n\nSource: TfL Night Tube page – “Current services” section【https://tfl.gov.uk/modes/tube/night-tube】.\n\n> ⚠️ Some links above could not be checked against the TfL pages this assistant searched. Please check them on tfl.gov.uk."
+    },
+    {
+      "id": "g07",
+      "type": "guidance",
+      "question": "Can people over 60 travel free in London?",
+      "tools_used": [
+        "search_tfl_guidance"
+      ],
+      "checks": {
+        "right_tools": true,
+        "cites_expected_page": true,
+        "no_invented_links": false
+      },
+      "passed": false,
+      "seconds": 2.81,
+      "tokens": 2498,
+      "answer": "Yes – people aged 60 or over who live in a London borough can get a **60+ London Oyster photocard**, which gives them free travel on most TfL services (bus, Tube, tram, DLR, London Overground and the Elizabeth line, except the West Drayton – Reading section).  \n\n- **Weekdays:** free at any time **except** the morning peak window 04:30‑09:00.  \n- **Weekends & bank holidays:** free all day.  \n\nThe photocard also provides free travel on many National Rail services, subject to similar time restrictions.  \n\nSource: TfL “60+ London Oyster photocard” – *Travel on TfL* section【https://tfl.gov.uk/fares/free-and-discounted-travel/60-plus-oyster-photocard】.\n\n> ⚠️ Some links above could not be checked against the TfL pages this assistant searched. Please check them on tfl.gov.uk."
+    },
+    {
+      "id": "g08",
+      "type": "guidance",
+      "question": "Does my 8 year old need a ticket for the Tube?",
+      "tools_used": [
+        "search_tfl_guidance",
+        "search_tfl_guidance",
+        "search_tfl_guidance"
+      ],
+      "checks": {
+        "right_tools": true,
+        "cites_expected_page": false,
+        "no_invented_links": false
+      },
+      "passed": false,
+      "seconds": 61.34,
+      "tokens": 6751,
+      "answer": "I’m sorry, but the guidance I’ve retrieved doesn’t include the rules for children’s Tube travel. For the most up‑to‑date information on whether an 8‑year‑old needs a ticket, please see TfL’s official fares page: https://tfl.gov.uk/fares/find-fares/children‑and‑young‑people‑fares.\n\n> ⚠️ Some links above could not be checked against the TfL pages this assistant searched. Please check them on tfl.gov.uk."
+    },
+    {
+      "id": "l01",
+      "type": "live",
+      "question": "Is the Victoria line running normally right now?",
+      "tools_used": [
+        "get_line_status"
+      ],
+      "checks": {
+        "right_tools": true,
+        "live_timestamp": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 56.78,
+      "tokens": 1620,
+      "answer": "Yes – the Victoria line is currently operating with **Good Service** (as of Wed 07 Oct 2026, 21:34)."
+    },
+    {
+      "id": "l02",
+      "type": "live",
+      "question": "Are there any delays on the Tube at the moment?",
+      "tools_used": [
+        "get_line_status"
+      ],
+      "checks": {
+        "right_tools": true,
+        "live_timestamp": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 3.23,
+      "tokens": 1900,
+      "answer": "Yes – as of **Wed 07 Oct 2026 21:35** there are live disruptions:\n\n- **Bakerloo Line** – **Severe delays** (train cancellations).  \n- **Central Line** – **Minor delays** between North Acton ↔ Ealing Broadway/West Ruislip and Leytonstone ↔ Epping/Hainault (train cancellations).\n\nAll other Tube lines are currently reporting **good service**."
+    },
+    {
+      "id": "l03",
+      "type": "live",
+      "question": "When is the next train at Oxford Circus?",
+      "tools_used": [
+        "get_next_trains"
+      ],
+      "checks": {
+        "right_tools": true,
+        "live_timestamp": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 57.4,
+      "tokens": 1780,
+      "answer": "The next trains at Oxford Circus are arriving now:\n\n- **Central line (Eastbound to Loughton)** – in **1 minute** (Platform 2)  \n- **Victoria line (Northbound to Walthamstow Central)** – in **1 minute** (Platform 6)  \n\nThese times are live as of **Wed 07 Oct 2026, 21:35**."
+    },
+    {
+      "id": "l04",
+      "type": "live",
+      "question": "How much is a single from Bank to King's Cross?",
+      "tools_used": [
+        "get_fare"
+      ],
+      "checks": {
+        "right_tools": true,
+        "live_timestamp": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 2.27,
+      "tokens": 1835,
+      "answer": "A single from Bank to King’s Cross costs **£3.00** if you pay as you go (off‑peak) – the cash fare is **£7.00**.  \n\n*Live data as of Wed 07 Oct 2026 21:36.*"
+    },
+    {
+      "id": "l05",
+      "type": "live",
+      "question": "What's the fare from Brixton to Waterloo?",
+      "tools_used": [
+        "get_fare"
+      ],
+      "checks": {
+        "right_tools": true,
+        "live_timestamp": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 58.36,
+      "tokens": 1781,
+      "answer": "The adult Pay‑as‑you‑go fare from Brixton to Waterloo is **£3.10 (off‑peak)**.  \n\n- Peak fare: £3.60  \n- Cash single ticket: £7.00  \n\n*This is live fare information (as of Wed 07 Oct 2026, 21:36).*"
+    },
+    {
+      "id": "m01",
+      "type": "multi",
+      "question": "How much is it from Bank to Victoria, and is the Central line OK?",
+      "tools_used": [
+        "get_fare",
+        "get_line_status"
+      ],
+      "checks": {
+        "right_tools": true,
+        "live_timestamp": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 53.96,
+      "tokens": 2743,
+      "answer": "The adult single fare from Bank to Victoria is **£3.10 peak** (or £3.00 off‑peak) if you use Pay‑as‑you‑go, and **£7.00** if you pay cash.\n\nThe Central line is currently experiencing **minor delays** (as of 21:37 GMT on 7 Oct 2026). The delays affect sections between North Acton – Ealing Broadway/West Ruislip and Leytonstone – Epping/Hainault via Newbury Park; the rest of the line is running normally."
+    },
+    {
+      "id": "m02",
+      "type": "multi",
+      "question": "Is the Northern line running, and do I need to touch out when I get to Camden Town?",
+      "tools_used": [
+        "get_line_status",
+        "search_tfl_guidance"
+      ],
+      "checks": {
+        "right_tools": true,
+        "live_timestamp": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 9.15,
+      "tokens": 3411,
+      "answer": "The Northern line is currently running with **Good Service** (live as of 21:38 BST).  \n\nYes – you must **touch out** at Camden Town (or any other Tube station) to complete your journey and be charged the correct fare.  \n\nFor more details see TfL’s guidance on touching in and out: <https://tfl.gov.uk/fares/how-to-pay-and-where-to-buy-tickets-and-oyster/pay-as-you-go/touching-in-and-out> (section “Overview”)."
+    },
+    {
+      "id": "u01",
+      "type": "unknown_station",
+      "question": "How much is a ticket from Hogwarts to Bank?",
+      "tools_used": [
+        "get_fare"
+      ],
+      "checks": {
+        "right_tools": true,
+        "tool_reported_error": true,
+        "no_invented_price": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 57.51,
+      "tokens": 1787,
+      "answer": "I’m sorry—I couldn’t find a station called **Hogwarts**. Did you perhaps mean one of the nearby stations such as **Edgware**, **High Barnet**, or **Highgate**? If you let me know the correct station name, I can give you the fare to Bank."
+    },
+    {
+      "id": "x01",
+      "type": "out_of_scope",
+      "question": "What's the best restaurant in Soho?",
+      "tools_used": [],
+      "checks": {
+        "no_tools": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 2.95,
+      "tokens": 812,
+      "answer": "I’m sorry, but I can only help with questions about London’s public transport. If you need advice on travelling on the Tube, buses, fares, or related services, feel free to ask!"
+    },
+    {
+      "id": "x02",
+      "type": "out_of_scope",
+      "question": "Write me a poem about the sea.",
+      "tools_used": [],
+      "checks": {
+        "no_tools": true,
+        "no_invented_links": true
+      },
+      "passed": true,
+      "seconds": 0.75,
+      "tokens": 788,
+      "answer": "I’m sorry, but I can only help with questions about London’s transport network."
+    }
+  ]
+}

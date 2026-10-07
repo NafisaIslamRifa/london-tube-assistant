@@ -6,6 +6,5 @@
 **/*.pyc
 .pytest_cache
 data/chroma
-data/raw
 eval/results_*.json
 *.sh
