@@ -102,3 +102,18 @@ def test_guardrail_allows_trailing_slash_and_home_page():
     out = check_answer("See https://tfl.gov.uk/ and https://tfl.gov.uk/fares/x/.",
                        {"https://tfl.gov.uk/fares/x"})
     assert out["report"]["unsupported_urls"] == []
+
+
+def test_guardrail_handles_cjk_bracket_citations():
+    """Regression: gpt-oss writes 【url】; the closing bracket was read as part of the URL."""
+    url = "https://tfl.gov.uk/modes/tube/night-tube"
+    out = check_answer(f"Source: Night Tube page【{url}】.", {url})
+    assert out["report"]["unsupported_urls"] == [] and "could not be checked" not in out["answer"]
+    bad = check_answer("See https://tfl.gov.uk/made-up】.", {url})
+    assert bad["report"]["unsupported_urls"] == ["https://tfl.gov.uk/made-up"]
+
+
+def test_prompt_forbids_memory_answers_and_placeholder_citations():
+    from tube.agent.prompts import build_system_prompt
+    p = build_system_prompt("now")
+    assert "Never answer a rules question from memory" in p and "【source】" in p

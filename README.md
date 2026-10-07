@@ -6,7 +6,7 @@
 
 **[Live demo](https://london-tube-assistant.streamlit.app/)** · LLM tool calling · RAG with Chroma · Streamlit · Docker · GitHub Actions
 
-![The assistant answering a fare question with live data]()<img width="1131" height="603" alt="image" src="https://github.com/user-attachments/assets/0da329d1-967d-4bdc-8b83-67659702d8b2" />
+![The London Tube Assistant answering with live data and cited TfL guidance](https://github.com/user-attachments/assets/0da329d1-967d-4bdc-8b83-67659702d8b2)
 
 
 > Unofficial portfolio project, not affiliated with TfL. Powered by TfL Open Data.
@@ -52,6 +52,7 @@ flowchart LR
 
 ### Retrieval: does search find the right TfL section? (`python -m tube.evaluation.retrieval_eval`)
 
+<!-- retrieval-eval:start -->
 Measured on 32 everyday-language questions, each mapped to the TfL page and section that answers it (2026-10-07).
 
 | Search | Right page first | Right page in top 5 | **Right section first** | Right section in top 3 | Section MRR |
@@ -74,13 +75,15 @@ Model: `openai/gpt-oss-120b via groq` · run 2026-10-07 · 0 errors.
 | Live answers that state the data's time | 1.00 |
 | Unknown station handled without inventing a fare | 1.00 |
 | Invented-link rate | 0.17 |
-| Median time per question | 31.6 s |
+| Median time per question (incl. free-tier pacing) | 31.6 s |
 | Average tokens per question | 2571 |
 <!-- agent-eval:end -->
 
-The 18 questions cover guidance, each live tool, multi-tool questions, an unknown station and off-topic requests. Live answers change, so checks are structural: right tools, the expected page linked, a timestamp on live data, no invented price or link.
+The 18 questions cover guidance, each live tool, multi-tool questions, an unknown station and off-topic requests. Live answers change, so checks are structural: right tools, the expected page linked, a timestamp on live data, no invented price or link. Times include the client-side pacing that keeps the run inside Groq's free tier.
 
 ### What evaluation caught along the way
+- **A wrong answer from memory:** the first agent run (13/18 passing) answered "no refunds for late Tube journeys", but TfL refunds delays of 15+ minutes. The model had narrowed the search to the wrong topic, missed the refunds page and fallen back on memory. Fix: the topic filter was removed (unfiltered search already finds the right section in the top 3 for 97% of questions) and the prompt now forbids answering rules from memory.
+- **False "invented link" alarms:** gpt-oss wraps citations in 【】 brackets, which the link checker read as part of the URL. The checker and prompt were fixed, with regression tests.
 - **Wrong page list:** the first fetch showed 2 of 9 TfL pages had moved (404). They were replaced with real paths found by a link-discovery script.
 - **Wrong test questions:** section-level accuracy was stuck at 0.64. Inspecting the failures showed several questions expected section headings that TfL's pages no longer have. Rewriting the questions against the real headings gave trustworthy numbers.
 - **Scraping blocked in the cloud:** tfl.gov.uk refused requests from the hosting provider. The app degraded gracefully (live tools kept working) and now ships a dated snapshot of the pages instead.

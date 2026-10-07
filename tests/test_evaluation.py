@@ -70,7 +70,7 @@ def test_tables_render():
     r = retrieval_table(RETRIEVAL)
     assert "32 everyday-language questions" in r and "| vector only | 0.94 | 1.00 | 0.81 | 0.97 | 0.88 |" in r
     a = agent_table(AGENT)
-    assert "| Questions passing every check | 16 / 18 |" in a and "| Median time per question | 2.4 s |" in a
+    assert "| Questions passing every check | 16 / 18 |" in a and "| Median time per question (incl. free-tier pacing) | 2.4 s |" in a
 
 
 def test_update_replaces_only_between_markers():

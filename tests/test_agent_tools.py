@@ -66,9 +66,14 @@ def test_search_returns_compact_cited_passages(box):
     assert r["retrieved"] == "2026-10-07"
 
 
-def test_search_falls_back_when_topic_finds_nothing(box):
-    data, _ = call(box, "search_tfl_guidance", query="lifts", topic="accessibility")
-    assert data["results"]
+def test_search_ignores_topic_from_the_model(box):
+    """Regression: a wrong topic guess hid the refunds page, so topics are ignored."""
+    seen = []
+    box.search_fn = lambda q, k=4, topic=None: seen.append(topic) or fake_search(q, k)
+    data, err = call(box, "search_tfl_guidance", query="delay refund", topic="fares")
+    assert not err and data["results"] and seen == [None]
+    spec = next(t for t in box.specs if t["name"] == "search_tfl_guidance")
+    assert "topic" not in spec["parameters"]["properties"]
 
 
 def test_all_lines_shows_disruptions_first(box):

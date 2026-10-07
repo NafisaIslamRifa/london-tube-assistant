@@ -44,7 +44,7 @@ def agent_table(report: dict) -> str:
             ("Live answers that state the data's time", fmt(s["live_timestamp_rate"])),
             ("Unknown station handled without inventing a fare", fmt(s["unknown_station_handled"])),
             ("Invented-link rate", fmt(s["invented_link_rate"])),
-            ("Median time per question", f"{s['median_seconds']} s" if s["median_seconds"] else "–"),
+            ("Median time per question (incl. free-tier pacing)", f"{s['median_seconds']} s" if s["median_seconds"] else "–"),
             ("Average tokens per question", fmt(s["avg_tokens"]))]
     return "\n".join([f"Model: `{report['model']}` · run {report['run_at'][:10]} · "
                       f"{s['errors']} error{'' if s['errors'] == 1 else 's'}.", "", "| Metric | Result |", "|---|---|"]

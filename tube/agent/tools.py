@@ -33,8 +33,6 @@ TOOL_SPECS = [
             "type": "object",
             "properties": {
                 "query": {"type": "string", "description": "What to look up, in plain words."},
-                "topic": {"type": "string", "enum": TOPICS,
-                          "description": "Optional: narrow the search to one topic."},
             },
             "required": ["query"],
         },
@@ -122,11 +120,12 @@ class Toolbox:
             return _dump({"error": f"Bad arguments for {name}: {exc}"}), True
 
     # ------------------------------------------------------------------ tools
-    def search_tfl_guidance(self, query: str, topic: str | None = None) -> str:
-        topic = topic if topic in TOPICS else None
-        hits = self.search_fn(query, k=4, topic=topic)
-        if not hits and topic:
-            hits = self.search_fn(query, k=4)  # topic guess was too narrow
+    def search_tfl_guidance(self, query: str, **_ignored) -> str:
+        # No topic filter: in the agent evaluation the model sometimes picked the wrong
+        # topic (refunds are filed under "paying"), missed the right page and answered
+        # from memory. Unfiltered search already ranks the right section in the top 3
+        # for 97% of the retrieval test questions.
+        hits = self.search_fn(query, k=4)
         return _dump({"results": [{
             "title": h["title"], "section": h["section"], "url": h["url"],
             "retrieved": (h.get("fetched_at") or "")[:10],
