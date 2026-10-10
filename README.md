@@ -111,6 +111,15 @@ python -m streamlit run app/streamlit_app.py
 ```
 
 ### Docker
+
+**Quickest: run the published image** (no clone, no build)
+```bash
+docker run --rm -p 8501:8501 -e LLM_API_KEY=your-groq-key nafisarifa/london-tube-assistant
+# open http://localhost:8501
+```
+Image on Docker Hub: [nafisarifa/london-tube-assistant](https://hub.docker.com/r/nafisarifa/london-tube-assistant). It is rebuilt and pushed by CI on every commit to `main` (tags: `latest` and the commit SHA).
+
+**Build from source**
 ```bash
 docker compose up --build                  # http://localhost:8501
 ```
@@ -120,7 +129,6 @@ docker compose up --build                  # http://localhost:8501
 | Hosted LLM (Groq), default | `docker compose up --build` |
 | Fully local LLM, no key (Ollama + llama3.2, ~2 GB) | `docker compose -f docker-compose.yml -f docker-compose.ollama.yml up --build` |
 | GitHub Codespaces (container networking workaround) | `docker compose -f docker-compose.yml -f docker-compose.host.yml up --build` |
-
 ### Free public demo (Streamlit Community Cloud)
 App file `app/streamlit_app.py`, Python 3.12, and these Secrets:
 ```toml
